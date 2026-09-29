@@ -1,0 +1,371 @@
+/* ==========================================================================
+   GlobalCorridors Styles — Minimalist Elastic Gallery for Serving Cities
+   - 100% Natural Atmospheric Section Transition System
+   - City Name Only (Zero Unnecessary Clutter)
+   - Smooth Horizontal Elastic Expansion
+   - High-Contrast Photographic Backdrops & Editorial Gradient
+   - Manrope 700 & Inter 500 Typography
+   ========================================================================== */
+
+.global-corridors-section {
+  position: relative;
+  width: 100%;
+  padding: 4.5rem 0 4.25rem;
+  overflow: hidden;
+  
+  /* Natural Continuous Gradient Ramp from Previous Section */
+  background: linear-gradient(
+    180deg,
+    rgba(250, 250, 250, 0) 0%,
+    rgba(244, 244, 245, 0.45) 15%,
+    rgba(244, 244, 245, 0.8) 45%,
+    rgba(244, 244, 245, 0.8) 65%,
+    rgba(244, 244, 245, 0.35) 90%,
+    rgba(250, 250, 250, 0) 100%
+  );
+}
+
+/* ==========================================================================
+   Natural Atmospheric Transition Layers (Zero Hard SVG Cuts)
+   ========================================================================== */
+
+.corridors-bg-layers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Soft Ambient Top Spotlight */
+.corridors-top-spotlight {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1050px;
+  height: 380px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(244, 244, 245, 0.5) 45%,
+    transparent 75%
+  );
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Precision Dot Matrix Grid with Radial Fade */
+.corridors-dot-matrix {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, #000000 35%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, #000000 35%, transparent 85%);
+  z-index: 2;
+}
+
+.corridors-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   Section Header
+   ========================================================================== */
+
+.corridors-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.corridors-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
+  color: #09090b;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.corridors-badge-icon {
+  color: #09090b;
+}
+
+.corridors-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 3.4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: #09090b;
+  margin: 0;
+}
+
+.corridors-title-muted {
+  color: #71717a;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Elastic Gallery Horizontal Container
+   ========================================================================== */
+
+.elastic-gallery-container {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  height: 480px;
+  border-radius: 20px;
+  position: relative;
+}
+
+/* ==========================================================================
+   Elastic Card Base
+   ========================================================================== */
+
+.elastic-card {
+  position: relative;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.2);
+  transition: flex 0.65s cubic-bezier(0.25, 1, 0.35, 1), transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.elastic-card:focus-visible {
+  box-shadow: 0 0 0 3px #09090b, 0 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+/* Collapsed vs Active Flex Ratios */
+.elastic-card-collapsed {
+  flex: 0.75;
+}
+
+.elastic-card-collapsed:hover {
+  flex: 1.05;
+  transform: translateY(-2px);
+}
+
+.elastic-card-active {
+  flex: 4.2;
+  cursor: default;
+}
+
+/* Background Image Layer */
+.elastic-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.elastic-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.35, 1);
+}
+
+.elastic-card:hover .elastic-card-img {
+  transform: scale(1.04);
+}
+
+/* Editorial Dark Gradient Overlay */
+.elastic-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 11, 0.1) 0%,
+    rgba(9, 9, 11, 0.35) 45%,
+    rgba(9, 9, 11, 0.9) 100%
+  );
+  transition: background 0.4s ease;
+}
+
+.elastic-card-collapsed .elastic-card-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 11, 0.25) 0%,
+    rgba(9, 9, 11, 0.6) 55%,
+    rgba(9, 9, 11, 0.92) 100%
+  );
+}
+
+/* ==========================================================================
+   Collapsed Card State (Minimal Vertical City Name)
+   ========================================================================== */
+
+.elastic-collapsed-content {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  padding: 1.75rem 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadeInCollapsed 0.35s ease forwards;
+}
+
+@keyframes fadeInCollapsed {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.collapsed-city-name {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   Expanded Card State (Clean City & Country Only)
+   ========================================================================== */
+
+.elastic-expanded-content {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  padding: 2.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  animation: fadeInExpanded 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInExpanded {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.expanded-city-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.expanded-country-tag {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.expanded-city-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .elastic-gallery-container {
+    height: 420px;
+  }
+
+  .elastic-expanded-content {
+    padding: 1.75rem 1.75rem;
+  }
+
+  .expanded-city-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .elastic-gallery-container {
+    flex-direction: column;
+    height: auto;
+    gap: 0.65rem;
+  }
+
+  .elastic-card-collapsed {
+    flex: none;
+    height: 75px;
+  }
+
+  .elastic-card-collapsed .elastic-collapsed-content {
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 1.5rem;
+  }
+
+  .collapsed-city-name {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 1.15rem;
+  }
+
+  .elastic-card-active {
+    flex: none;
+    height: 320px;
+  }
+
+  .elastic-expanded-content {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .expanded-city-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .global-corridors-section {
+    padding: 3.5rem 0 3.75rem;
+  }
+
+  .corridors-header {
+    margin-bottom: 2.25rem;
+  }
+}

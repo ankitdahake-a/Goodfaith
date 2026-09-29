@@ -1,0 +1,19 @@
+{
+  "name": "goodfaith-monorepo",
+  "version": "1.0.0",
+  "description": "GoodFaith Pharma IMPEX — Enterprise Pharmaceutical Exporter Portal (Frontend & Backend)",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "install:all": "npm --prefix frontend install && npm --prefix backend install"
+  },
+  "keywords": [
+    "pharmaceutical",
+    "b2b",
+    "export",
+    "goodfaith"
+  ],
+  "author": "GoodFaith Pharma Development Team"
+}

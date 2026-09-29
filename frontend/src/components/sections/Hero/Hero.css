@@ -1,0 +1,275 @@
+/* ==========================================================================
+   Hero Component Styles — Cinematic Integrated Background
+   - Full-Depth Auto-Crossfading Photo Canvas
+   - Precision Directional Gradient Ramp for 100% Crisp Typography
+   - Manrope 700 Headlines & Tactile Interactive Elements
+   ========================================================================== */
+
+.cal-hero-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: calc(88vh - 4rem);
+  padding: 3.5rem 0 4.5rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Cinematic Living Background Canvas
+   ========================================================================== */
+
+.hero-cinematic-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #09090b;
+}
+
+.hero-bg-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), transform 7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.hero-bg-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  display: block;
+}
+
+/* Directional Gradient Overlays for High-Contrast Text Legibility */
+.hero-gradient-overlay-left {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #fafafa 0%,
+    rgba(250, 250, 250, 0.98) 36%,
+    rgba(250, 250, 250, 0.85) 52%,
+    rgba(250, 250, 250, 0.45) 70%,
+    rgba(250, 250, 250, 0.1) 85%,
+    rgba(250, 250, 250, 0) 100%
+  );
+  z-index: 2;
+}
+
+.hero-gradient-overlay-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, #fafafa 0%, rgba(250, 250, 250, 0.5) 50%, transparent 100%);
+  z-index: 2;
+}
+
+.hero-gradient-overlay-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(to top, #fafafa 0%, rgba(250, 250, 250, 0.65) 50%, transparent 100%);
+  z-index: 2;
+}
+
+/* ==========================================================================
+   Foreground Content Layout
+   ========================================================================== */
+
+.cal-hero-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(75vh - 4rem);
+}
+
+.cal-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 650px;
+  padding-top: 1.5rem;
+}
+
+/* Headline: Manrope 800 Bold */
+.cal-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3.15rem, 4.6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #09090b;
+  margin: 0 0 1.35rem 0;
+}
+
+.title-highlight {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(180deg, #18181b 0%, #09090b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle: Inter 400 */
+.cal-hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.125rem; /* 18px */
+  font-weight: 450;
+  line-height: 1.65;
+  color: #3f3f46;
+  max-width: 530px;
+  margin: 0 0 2.25rem 0;
+}
+
+/* Dual Action Buttons */
+.cal-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.cal-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #09090b;
+  color: #ffffff;
+  font-family: var(--font-btn);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 0.8rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cal-btn-primary:hover {
+  background: #18181b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.cal-btn-primary:active {
+  transform: scale(0.96);
+}
+
+.cal-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  color: #09090b;
+  font-family: var(--font-btn);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 0.8rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid #e4e4e7;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 1px #ffffff;
+  transition: all 0.2s ease;
+}
+
+.cal-btn-secondary:hover {
+  border-color: #d4d4d8;
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Institutional Micro-Trust Bar */
+.hero-trust-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #52525b;
+  letter-spacing: -0.01em;
+}
+
+.trust-icon {
+  color: #18181b;
+  flex-shrink: 0;
+}
+
+.trust-separator {
+  color: #d4d4d8;
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .cal-hero-wrapper {
+    min-height: auto;
+    padding: 3rem 0 4rem;
+  }
+
+  .cal-hero-title {
+    font-size: 2.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cal-hero-wrapper {
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .hero-gradient-overlay-left {
+    background: linear-gradient(
+      to bottom,
+      rgba(250, 250, 250, 0.96) 0%,
+      rgba(250, 250, 250, 0.92) 55%,
+      rgba(250, 250, 250, 0.8) 75%,
+      rgba(250, 250, 250, 0.6) 100%
+    );
+  }
+
+  .cal-hero-title {
+    font-size: 2.35rem;
+  }
+
+  .cal-hero-subtitle {
+    font-size: 1rem;
+  }
+}

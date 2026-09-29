@@ -1,0 +1,19 @@
+/* ==========================================================================
+   App Component Layout Styles
+   ========================================================================== */
+
+.canvas-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.canvas-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

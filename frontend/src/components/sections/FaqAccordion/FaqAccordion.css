@@ -1,0 +1,198 @@
+/* ==========================================================================
+   FaqAccordion Styles — Minimal HeroUI Accordion with 21st.dev Background
+   - 21st.dev Signature Vignette Grid Pattern + Ambient Soft Glow
+   - Frosted Glass Splitted Cards with Zero Clutter
+   - Manrope 600 Questions & Inter 400 Concise Answers
+   ========================================================================== */
+
+.faq-section {
+  position: relative;
+  width: 100%;
+  padding: 4.5rem 0 5.5rem;
+  overflow: hidden;
+  background: #fafafa;
+  border-top: 1px solid #e4e4e7;
+}
+
+/* ==========================================================================
+   21st.dev Signature Background Layers
+   ========================================================================== */
+
+.faq-bg-layers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Ambient Top-Center Spotlight Glow */
+.faq-spotlight {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 950px;
+  height: 480px;
+  background: radial-gradient(
+    ellipse at 50% 15%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(244, 244, 245, 0.7) 45%,
+    transparent 80%
+  );
+  filter: blur(40px);
+}
+
+/* 21st.dev Precision Hairline Grid with Radial Vignette Fade */
+.faq-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000000 35%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000000 35%, transparent 95%);
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* Minimal Header */
+.faq-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.faq-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: #09090b;
+  margin: 0;
+}
+
+/* Minimal Accordion List */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.faq-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.faq-card:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.faq-card-open {
+  border-color: #18181b;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
+}
+
+/* Trigger Button */
+.faq-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.15rem 1.35rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 1rem;
+  outline: none;
+}
+
+.faq-question {
+  font-family: var(--font-heading);
+  font-size: 0.96875rem; /* ~15.5px */
+  font-weight: 600;
+  color: #09090b;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.faq-chevron {
+  color: #71717a;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.faq-chevron-rotated {
+  transform: rotate(180deg);
+  color: #09090b;
+}
+
+/* Collapse Animation */
+.faq-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease,
+              visibility 0.3s ease;
+}
+
+.faq-collapse-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+}
+
+.faq-answer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.faq-answer-content {
+  padding: 0 1.35rem 1.25rem;
+}
+
+.faq-answer {
+  font-family: var(--font-body);
+  font-size: 0.90625rem; /* 14.5px */
+  font-weight: 400;
+  color: #52525b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .faq-section {
+    padding: 3rem 0 3.75rem;
+  }
+
+  .faq-trigger {
+    padding: 1rem 1.15rem;
+  }
+
+  .faq-answer-content {
+    padding: 0 1.15rem 1.1rem;
+  }
+
+  .faq-spotlight {
+    width: 600px;
+    height: 350px;
+  }
+}

@@ -1,0 +1,151 @@
+/* ==========================================================================
+   UnderMaintenance Styles
+   - Clean, minimal 21st.dev aesthetic
+   - Ambient center spotlight & subtle hairline grid
+   - Manrope 700 Heading & Inter 400 body
+   ========================================================================== */
+
+.maintenance-root {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.maintenance-ambient-spotlight {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 450px;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(244, 244, 245, 0.5) 45%,
+    transparent 75%
+  );
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.maintenance-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, #000000 35%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, #000000 35%, transparent 95%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.maintenance-container {
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.maintenance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.95rem;
+  background: rgba(24, 24, 27, 0.05);
+  border: 1px solid rgba(24, 24, 27, 0.1);
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 1.5rem;
+}
+
+.badge-icon {
+  color: #71717a;
+}
+
+.maintenance-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #09090b;
+  line-height: 1.1;
+  margin: 0 0 1.25rem 0;
+}
+
+.maintenance-desc {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  color: #52525b;
+  line-height: 1.6;
+  margin: 0 0 2.25rem 0;
+  max-width: 540px;
+}
+
+.maintenance-desc strong {
+  color: #09090b;
+  font-weight: 600;
+}
+
+.maintenance-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.maintenance-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #09090b;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+}
+
+.maintenance-primary-btn:hover {
+  background: #27272a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.maintenance-primary-btn:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 640px) {
+  .maintenance-root {
+    padding: 4.5rem 1.25rem;
+    min-height: 60vh;
+  }
+
+  .maintenance-heading {
+    font-size: 2.25rem;
+  }
+
+  .maintenance-desc {
+    font-size: 0.9375rem;
+  }
+}

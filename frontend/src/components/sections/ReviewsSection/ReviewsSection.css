@@ -1,0 +1,323 @@
+:root {
+  --reviews-gap: 1.25rem;
+}
+
+/* ==========================================================================
+   ReviewsSection Styles — Minimalist Dark Card Testimonials Marquee
+   - Natural Atmospheric Section Transition
+   - Sleek Dark Rounded Cards (#141416 / Onyx)
+   - Avatar + Name + @handle/Role + Direct Quote
+   - 100% Seamless Infinite Scrolling in Opposite Directions (Zero Glitch)
+   ========================================================================== */
+
+.reviews-section {
+  position: relative;
+  width: 100%;
+  padding: 4.5rem 0 5rem;
+  overflow: hidden;
+  
+  /* Natural Continuous Gradient Ramp from Previous Section */
+  background: linear-gradient(
+    180deg,
+    rgba(250, 250, 250, 0) 0%,
+    rgba(244, 244, 245, 0.45) 15%,
+    rgba(244, 244, 245, 0.8) 45%,
+    rgba(244, 244, 245, 0.8) 65%,
+    rgba(244, 244, 245, 0.4) 85%,
+    rgba(250, 250, 250, 0) 100%
+  );
+}
+
+/* ==========================================================================
+   Natural Atmospheric Transition Layers
+   ========================================================================== */
+
+.reviews-bg-layers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Soft Ambient Top Spotlight */
+.reviews-top-spotlight {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1050px;
+  height: 380px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(244, 244, 245, 0.5) 45%,
+    transparent 75%
+  );
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Precision Dot Matrix Grid with Radial Fade */
+.reviews-dot-matrix {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, #000000 35%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, #000000 35%, transparent 85%);
+  z-index: 2;
+}
+
+.reviews-header-container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   Section Header
+   ========================================================================== */
+
+.reviews-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reviews-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 3.4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: #09090b;
+  margin: 0;
+}
+
+.reviews-title-muted {
+  color: #71717a;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Dual-Row Testimonials Marquee Container
+   ========================================================================== */
+
+.reviews-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--reviews-gap, 1.25rem);
+  margin-top: 2.75rem;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+/* Left & Right Edge Gradient Fade Masks */
+.reviews-mask-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 140px;
+  background: linear-gradient(to right, #fafafa 0%, rgba(250, 250, 250, 0) 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.reviews-mask-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 140px;
+  background: linear-gradient(to left, #fafafa 0%, rgba(250, 250, 250, 0) 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Marquee Row Tracks */
+.reviews-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: var(--reviews-gap, 1.25rem);
+  will-change: transform;
+}
+
+.reviews-marquee-group {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  gap: var(--reviews-gap, 1.25rem);
+  will-change: transform;
+}
+
+/* Row 1 Animation (Leftwards Smooth Continuous Scroll) */
+.marquee-scroll-left {
+  animation: scrollMarqueeLeft 52s linear infinite;
+}
+
+/* Row 2 Animation (Rightwards Smooth Continuous Scroll) */
+.marquee-scroll-right {
+  animation: scrollMarqueeRight 56s linear infinite;
+}
+
+@keyframes scrollMarqueeLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--reviews-gap, 1.25rem)));
+  }
+}
+
+@keyframes scrollMarqueeRight {
+  from {
+    transform: translateX(calc(-100% - var(--reviews-gap, 1.25rem)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* ==========================================================================
+   Minimalist Dark Review Card (Exact Reference Match)
+   ========================================================================== */
+
+.review-minimal-card {
+  width: 360px;
+  max-width: 360px;
+  flex-shrink: 0;
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.35rem 1.45rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  text-align: left;
+}
+
+.review-minimal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Card Header: User Info */
+.card-user-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.card-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-avatar-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+.card-user-meta {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-user-name {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 0.15rem 0;
+  white-space: nowrap;
+}
+
+.card-user-handle {
+  font-family: var(--font-body);
+  font-size: 0.78125rem;
+  font-weight: 400;
+  color: #a1a1aa;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Quote Content */
+.card-quote-content {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #e4e4e7;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --reviews-gap: 0.875rem;
+  }
+
+  .reviews-section {
+    padding: 3rem 0 3.75rem;
+  }
+
+  .review-minimal-card {
+    width: 290px;
+    max-width: 290px;
+    padding: 1.15rem 1.25rem;
+  }
+
+  .reviews-mask-left,
+  .reviews-mask-right {
+    width: 50px;
+  }
+
+  .marquee-scroll-left {
+    animation-duration: 38s;
+  }
+
+  .marquee-scroll-right {
+    animation-duration: 40s;
+  }
+}

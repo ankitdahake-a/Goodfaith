@@ -1,0 +1,46 @@
+/* ==========================================================================
+   ModernBackground Styles — Subtle Ambient Monochrome Lighting & Precision Grid
+   ========================================================================== */
+
+.modern-bg-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+}
+
+.orb-primary {
+  width: 700px;
+  height: 700px;
+  top: -200px;
+  left: 25%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.025) 0%, transparent 70%);
+  opacity: 1;
+}
+
+.orb-secondary {
+  width: 600px;
+  height: 600px;
+  top: 150px;
+  right: 15%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
+  opacity: 1;
+}
+
+.grid-layer {
+  position: absolute;
+  inset: 0;
+  background-size: 44px 44px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 20%, #000000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 20%, #000000 30%, transparent 80%);
+}

@@ -1,0 +1,387 @@
+/* ==========================================================================
+   Navbar Component Styles — Tactile Floating Capsule Design
+   Full-Width Grid Alignment with 1220px Content Container
+   ========================================================================== */
+
+.navbar-wrapper {
+  position: fixed;
+  top: 1.25rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  padding: 0 1.5rem;
+  pointer-events: none;
+}
+
+.floating-navbar {
+  width: 100%;
+  max-width: 1220px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.65rem 0.45rem 1.35rem;
+  border-radius: 9999px;
+  pointer-events: auto;
+  
+  /* Tactile Neumorphic & Frosted Glass Layering */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 245, 249, 0.92) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  
+  /* Precision Tactile Shadows */
+  box-shadow: 
+    0 16px 32px -8px rgba(0, 0, 0, 0.06),
+    0 6px 12px -4px rgba(0, 0, 0, 0.02),
+    inset 0 1.5px 1.5px #ffffff,
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.04);
+  
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-navbar:hover {
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.09),
+    0 8px 16px -4px rgba(0, 0, 0, 0.03),
+    inset 0 1.5px 1.5px #ffffff,
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Left Brand: Direct Logo with High-Contrast Dark Filter */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 0.15rem;
+  transition: transform 0.2s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.02);
+}
+
+.navbar-logo-as-is {
+  height: 1.95rem;
+  width: auto;
+  max-width: 130px;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0);
+  opacity: 0.92;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.navbar-logo-as-is:hover {
+  opacity: 1;
+}
+
+/* Center Nav Items Container */
+.navbar-links-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.25rem;
+}
+
+/* Fluid Sliding White Pill Indicator */
+.nav-sliding-indicator {
+  position: absolute;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  left: 0;
+  background: #ffffff;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 1;
+  
+  /* Tactile Pill Shadows */
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.07),
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    inset 0 1px 1px #ffffff;
+  
+  /* Smooth Elastic Easing Transition */
+  transition: 
+    transform 0.32s cubic-bezier(0.25, 1, 0.5, 1),
+    width 0.32s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.2s ease;
+}
+
+/* Nav Item Buttons: Inter 500 (14–15px) */
+.nav-pill-btn {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  font-family: var(--font-nav);
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 0.5rem 1.15rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: color 0.22s ease;
+  outline: none;
+  white-space: nowrap;
+}
+
+.nav-pill-btn:hover {
+  color: var(--text-dark);
+}
+
+.nav-pill-btn.active {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Right CTA Button: Inter 600 (14–16px) */
+.navbar-action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-cta-btn {
+  background: linear-gradient(180deg, #18181b 0%, #09090b 100%);
+  color: #ffffff;
+  font-family: var(--font-btn);
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 0.55rem 1.45rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  
+  /* High-Contrast Neutral Tactile Shadow */
+  box-shadow: 
+    0 3px 10px rgba(0, 0, 0, 0.22),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.2);
+  
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover State: High-Contrast Modern Charcoal/Onyx sheen */
+.navbar-cta-btn:hover {
+  background: linear-gradient(180deg, #27272a 0%, #09090b 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.28),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.3);
+}
+
+/* Active Click Press State */
+.navbar-cta-btn:active {
+  transform: scale(0.96);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Menu Toggle Button (Desktop: Hidden) */
+.mobile-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: scale(1.04);
+}
+
+.mobile-menu-toggle.active {
+  background: #09090b;
+  color: #ffffff;
+  border-color: #09090b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Slide-Over Sidebar Backdrop */
+.mobile-sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-sidebar-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile Slide-Over Sidebar Drawer */
+.mobile-sidebar-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 82%;
+  max-width: 320px;
+  height: 100vh;
+  height: 100dvh;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+  z-index: 201;
+  box-shadow: -12px 0 36px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.mobile-sidebar-drawer.open {
+  transform: translateX(0);
+}
+
+/* Sidebar Header: Brand Logo & Tactile Close Button */
+.mobile-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.35rem 1.25rem 1.15rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mobile-sidebar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.mobile-sidebar-logo {
+  height: 1.85rem;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: brightness(0);
+  opacity: 0.95;
+}
+
+.mobile-sidebar-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.mobile-sidebar-close-btn:hover {
+  background: #09090b;
+  color: #ffffff;
+  border-color: #09090b;
+  transform: rotate(90deg);
+}
+
+/* Sidebar Nav Body */
+.mobile-sidebar-nav {
+  flex: 1;
+  padding: 1.25rem 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mobile-sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  border-radius: 0.75rem;
+  background: transparent;
+  border: none;
+  font-family: var(--font-nav);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: left;
+  outline: none;
+}
+
+.mobile-sidebar-link:hover {
+  background: rgba(0, 0, 0, 0.04);
+  transform: translateX(3px);
+}
+
+.mobile-sidebar-link.active {
+  background: #09090b;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.mobile-sidebar-active-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .floating-navbar {
+    padding: 0.4rem 0.55rem 0.4rem 1.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-wrapper {
+    padding: 0 1rem;
+    top: 0.85rem;
+  }
+
+  .floating-navbar {
+    padding: 0.4rem 0.5rem 0.4rem 0.95rem;
+  }
+
+  .navbar-links-pill {
+    display: none;
+  }
+
+  .desktop-only-cta {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+}

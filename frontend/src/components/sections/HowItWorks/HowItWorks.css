@@ -1,0 +1,539 @@
+/* ==========================================================================
+   HowItWorks Styles — Ultra-Crisp Alternating 4-Step Process Section
+   Matching Exact User Reference Layout:
+   - Centered 'Simple Process' Pill Badge & Header
+   - Alternating Zigzag Layout with Giant Numbers (01, 02, 03, 04)
+   - Colored Squircles, Clean Descriptions, 3-point Checklists
+   - Soft-Glow Elevated Minimalist Illustration Cards with Ambient Orbs
+   - Centered Downward Connector Arrows (↓)
+   Typography: Manrope 700 (Headings, Numbers) & Inter 400/500 (Body)
+   ========================================================================== */
+
+.hiw-section {
+  position: relative;
+  width: 100%;
+  padding: 3.5rem 0 4.5rem;
+  overflow: hidden;
+  background: transparent;
+}
+
+.hiw-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   Section Header
+   ========================================================================== */
+
+.hiw-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hiw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  color: #2563eb;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.15rem;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.06);
+}
+
+.hiw-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 3.4vw, 3.125rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: #09090b;
+  margin: 0 0 0.75rem;
+}
+
+.hiw-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #71717a;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   4-Step Zigzag Flow Layout
+   ========================================================================== */
+
+.hiw-steps-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.hiw-step-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Text Content Column
+   ========================================================================== */
+
+.hiw-text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+/* Giant Step Numbers */
+.hiw-step-num {
+  font-family: var(--font-heading);
+  font-size: clamp(2.75rem, 4vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.hiw-step-num-blue {
+  color: #60a5fa;
+}
+
+.hiw-step-num-purple {
+  color: #c084fc;
+}
+
+.hiw-step-num-teal {
+  color: #34d399;
+}
+
+.hiw-step-num-orange {
+  color: #fb923c;
+}
+
+/* Title & Icon Header */
+.hiw-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+  width: 100%;
+}
+
+.hiw-icon-squircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hiw-icon-blue {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.28);
+}
+
+.hiw-icon-purple {
+  background: #7c3aed;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.28);
+}
+
+.hiw-icon-teal {
+  background: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.28);
+}
+
+.hiw-icon-orange {
+  background: #ea580c;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.28);
+}
+
+.hiw-step-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.45vw, 1.35rem);
+  font-weight: 700;
+  color: #09090b;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* Description */
+.hiw-step-desc {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: #71717a;
+  line-height: 1.6;
+  margin: 0 0 1.15rem 0;
+  max-width: 460px;
+}
+
+/* Checkpoints List */
+.hiw-checkpoints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.hiw-checkpoint-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.hiw-check-bullet {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hiw-check-bullet-blue {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.hiw-check-bullet-purple {
+  background: #f5f3ff;
+  color: #7c3aed;
+  border: 1px solid #ddd6fe;
+}
+
+.hiw-check-bullet-teal {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.hiw-check-bullet-orange {
+  background: #fff7ed;
+  color: #ea580c;
+  border: 1px solid #fed7aa;
+}
+
+.hiw-checkpoint-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #3f3f46;
+}
+
+/* ==========================================================================
+   Visual Card Column
+   ========================================================================== */
+
+.hiw-card-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.hiw-visual-card {
+  width: 100%;
+  max-width: 480px;
+  height: 250px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hiw-visual-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Soft Ambient Glowing Shadows */
+.hiw-card-glow-blue {
+  box-shadow: 0 16px 36px -12px rgba(59, 130, 246, 0.12), 0 0 0 1px rgba(59, 130, 246, 0.08);
+}
+
+.hiw-card-glow-purple {
+  box-shadow: 0 16px 36px -12px rgba(168, 85, 247, 0.12), 0 0 0 1px rgba(168, 85, 247, 0.08);
+}
+
+.hiw-card-glow-teal {
+  box-shadow: 0 16px 36px -12px rgba(16, 185, 129, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.08);
+}
+
+.hiw-card-glow-orange {
+  box-shadow: 0 16px 36px -12px rgba(249, 115, 22, 0.12), 0 0 0 1px rgba(249, 115, 22, 0.08);
+}
+
+/* Graphic Container & Ambient Orbs */
+.hiw-graphic {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiw-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Blue Orbs */
+.hiw-orb-blue-1 {
+  width: 52px;
+  height: 52px;
+  background: #dbeafe;
+  opacity: 0.6;
+  left: 10%;
+  bottom: 15%;
+}
+
+.hiw-orb-blue-2 {
+  width: 32px;
+  height: 32px;
+  background: #eff6ff;
+  border: 1.5px solid #dbeafe;
+  opacity: 0.8;
+  right: 12%;
+  top: 15%;
+}
+
+.hiw-orb-blue-3 {
+  width: 20px;
+  height: 20px;
+  background: #bfdbfe;
+  opacity: 0.4;
+  left: 20%;
+  top: 12%;
+}
+
+/* Purple Orbs */
+.hiw-orb-purple-1 {
+  width: 54px;
+  height: 54px;
+  background: #f3e8ff;
+  opacity: 0.65;
+  left: 12%;
+  top: 15%;
+}
+
+.hiw-orb-purple-2 {
+  width: 34px;
+  height: 34px;
+  background: #faf5ff;
+  border: 1.5px solid #e9d5ff;
+  opacity: 0.8;
+  right: 14%;
+  bottom: 15%;
+}
+
+.hiw-orb-purple-3 {
+  width: 22px;
+  height: 22px;
+  background: #e9d5ff;
+  opacity: 0.45;
+  right: 22%;
+  top: 12%;
+}
+
+/* Teal Orbs */
+.hiw-orb-teal-1 {
+  width: 52px;
+  height: 52px;
+  background: #d1fae5;
+  opacity: 0.65;
+  right: 12%;
+  top: 16%;
+}
+
+.hiw-orb-teal-2 {
+  width: 34px;
+  height: 34px;
+  background: #ecfdf5;
+  border: 1.5px solid #a7f3d0;
+  opacity: 0.8;
+  left: 12%;
+  bottom: 15%;
+}
+
+.hiw-orb-teal-3 {
+  width: 22px;
+  height: 22px;
+  background: #a7f3d0;
+  opacity: 0.45;
+  left: 24%;
+  top: 12%;
+}
+
+/* Orange Orbs */
+.hiw-orb-orange-1 {
+  width: 50px;
+  height: 50px;
+  background: #ffedd5;
+  opacity: 0.7;
+  left: 10%;
+  bottom: 14%;
+}
+
+.hiw-orb-orange-2 {
+  width: 32px;
+  height: 32px;
+  background: #fff7ed;
+  border: 1.5px solid #fed7aa;
+  opacity: 0.8;
+  right: 14%;
+  top: 16%;
+}
+
+.hiw-orb-orange-3 {
+  width: 20px;
+  height: 20px;
+  background: #fed7aa;
+  opacity: 0.45;
+  right: 24%;
+  bottom: 12%;
+}
+
+/* Center Squircle Graphic Wrapper */
+.hiw-graphic-inner {
+  width: 90px;
+  height: 90px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.hiw-visual-card:hover .hiw-graphic-inner {
+  transform: scale(1.06);
+}
+
+.hiw-graphic-blue .hiw-graphic-inner {
+  background: #eff6ff;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.hiw-graphic-purple .hiw-graphic-inner {
+  background: #faf5ff;
+  border: 1px solid rgba(124, 58, 237, 0.12);
+}
+
+.hiw-graphic-teal .hiw-graphic-inner {
+  background: #ecfdf5;
+  border: 1px solid rgba(5, 150, 105, 0.12);
+}
+
+.hiw-graphic-orange .hiw-graphic-inner {
+  background: #fff7ed;
+  border: 1px solid rgba(234, 88, 12, 0.12);
+}
+
+/* ==========================================================================
+   Downward Connector Arrow (↓)
+   ========================================================================== */
+
+.hiw-connector-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+.hiw-down-arrow {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.75;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hiw-down-arrow:hover {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .hiw-step-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* On mobile/tablet, always put Text first and Card second */
+  .hiw-step-row-even .hiw-card-col {
+    order: 2;
+  }
+
+  .hiw-step-row-even .hiw-text-col {
+    order: 1;
+  }
+
+  .hiw-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hiw-section {
+    padding: 3rem 0 3.75rem;
+  }
+
+  .hiw-container {
+    padding: 0 1.25rem;
+  }
+
+  .hiw-visual-card {
+    height: 200px;
+    padding: 1.5rem;
+  }
+
+  .hiw-step-num {
+    margin-bottom: 0.5rem;
+  }
+}

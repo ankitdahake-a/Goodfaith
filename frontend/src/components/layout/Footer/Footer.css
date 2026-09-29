@@ -1,0 +1,346 @@
+/* ==========================================================================
+   Footer Styles — Institutional Enterprise Footer
+   - Dark Onyx Theme (#09090b / Charcoal)
+   - Official Header Logo with Clean Contrast
+   - Strict Left-Alignment (text-align: left) Across All Columns
+   - Pixel-Perfect Top Baseline Alignment Across All 4 Columns
+   - CDSCO License Badge & Regulatory Credentials
+   - 24/7 Global Dispatch Hotline & Hub Details
+   - Strict 1220px Layout Alignment
+   ========================================================================== */
+
+.footer-root {
+  position: relative;
+  width: 100%;
+  background: #09090b;
+  color: #a1a1aa;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4.5rem 0 2.5rem;
+  overflow: hidden;
+  text-align: left;
+}
+
+.footer-container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: left;
+}
+
+/* 4-Column Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr 1fr 1.35fr;
+  gap: 2.75rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: start;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Column 1: Brand & Logo */
+.footer-col-brand {
+  padding-right: 1.5rem;
+}
+
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 2.25rem;
+  margin-bottom: 1.15rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-logo-wrap:hover {
+  opacity: 0.9;
+}
+
+.footer-logo-img {
+  height: 2.15rem;
+  width: auto;
+  max-width: 135px;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.footer-brand-desc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #a1a1aa;
+  margin: 0 0 1.35rem 0;
+  max-width: 320px;
+  text-align: left;
+}
+
+/* License Pill */
+.footer-license-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.65rem 0.95rem;
+  text-align: left;
+}
+
+.license-icon {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.license-details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.license-label {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.license-sub {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #71717a;
+  line-height: 1.2;
+  margin-top: 0.15rem;
+  text-align: left;
+}
+
+/* Column Headings (Normalized height for exact baseline match with logo) */
+.footer-col-heading {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 0 1.15rem 0;
+  text-align: left;
+}
+
+/* Navigation Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  text-align: left;
+}
+
+.footer-links li {
+  width: 100%;
+  text-align: left;
+}
+
+.footer-links li a {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  text-align: left;
+}
+
+.footer-links li a:hover {
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+/* Column 4: 24/7 Dispatch Card */
+.dispatch-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+  text-align: left;
+}
+
+.dispatch-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.dispatch-icon {
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+.dispatch-status {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.dispatch-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: #d4d4d8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-align: left;
+}
+
+.dispatch-contact-link:hover {
+  color: #ffffff;
+}
+
+.contact-icon {
+  color: #71717a;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.dispatch-contact-link:hover .contact-icon {
+  color: #ffffff;
+}
+
+.footer-hubs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  padding-left: 0.15rem;
+  text-align: left;
+}
+
+.hubs-label {
+  font-weight: 600;
+  color: #71717a;
+}
+
+.hubs-list {
+  color: #a1a1aa;
+}
+
+/* Legal Disclaimer */
+.footer-disclaimer-wrap {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: left;
+}
+
+.footer-disclaimer {
+  font-family: var(--font-body);
+  font-size: 0.78125rem;
+  line-height: 1.6;
+  color: #71717a;
+  margin: 0;
+  text-align: left;
+}
+
+.footer-disclaimer strong {
+  color: #a1a1aa;
+}
+
+/* Bottom Bar */
+.footer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  font-size: 0.8125rem;
+}
+
+.footer-copyright {
+  font-family: var(--font-body);
+  color: #71717a;
+  text-align: left;
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-legal-links a {
+  color: #71717a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-links a:hover {
+  color: #ffffff;
+}
+
+.legal-dot {
+  color: #3f3f46;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-col-brand {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-root {
+    padding: 3.5rem 0 2rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .footer-col-heading {
+    height: auto;
+    margin-bottom: 0.85rem;
+  }
+
+  .footer-logo-wrap {
+    height: auto;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

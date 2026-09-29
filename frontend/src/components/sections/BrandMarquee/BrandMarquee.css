@@ -1,0 +1,139 @@
+:root {
+  --brand-marquee-gap: 3rem;
+}
+
+/* ==========================================================================
+   BrandMarquee Styles — Infinite Continuous Scrolling Trust Ticker
+   - Seamless Infinite Loop with Zero Jump
+   - Left & Right Edge Gradient Fade Masks
+   - Modern Monochrome Aesthetics (Inter 500 & Slate Accents)
+   ========================================================================== */
+
+.brand-marquee-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.25rem 0;
+  border-top: 1px solid #e4e4e7;
+  border-bottom: 1px solid #e4e4e7;
+  background: #fafafa;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Edge Fade Masks for Soft Entry and Exit */
+.marquee-mask-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 140px;
+  background: linear-gradient(to right, #fafafa 0%, rgba(250, 250, 250, 0) 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.marquee-mask-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 140px;
+  background: linear-gradient(to left, #fafafa 0%, rgba(250, 250, 250, 0) 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Continuous Sliding Track */
+.brand-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: var(--brand-marquee-gap, 3rem);
+  will-change: transform;
+}
+
+.brand-marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--brand-marquee-gap, 3rem);
+  animation: scrollBrandMarquee 48s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scrollBrandMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--brand-marquee-gap, 3rem)));
+  }
+}
+
+/* Marquee Item Component */
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.marquee-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #71717a;
+  flex-shrink: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.marquee-item:hover .marquee-icon-wrap {
+  color: #09090b;
+  transform: scale(1.1);
+}
+
+.marquee-text {
+  font-family: var(--font-body);
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  color: #52525b;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.marquee-item:hover .marquee-text {
+  color: #09090b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --brand-marquee-gap: 1.75rem;
+  }
+
+  .brand-marquee-section {
+    padding: 1rem 0;
+  }
+
+  .marquee-mask-left,
+  .marquee-mask-right {
+    width: 60px;
+  }
+
+  .marquee-item {
+    gap: 0.5rem;
+  }
+
+  .marquee-text {
+    font-size: 0.8125rem;
+  }
+
+  .brand-marquee-group {
+    animation-duration: 36s;
+  }
+}
