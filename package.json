@@ -4,6 +4,7 @@
   "description": "GoodFaith Pharma IMPEX — Enterprise Pharmaceutical Exporter Portal (Frontend & Backend)",
   "private": true,
   "scripts": {
+    "build": "npm --prefix frontend run build",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
     "build:frontend": "npm --prefix frontend run build",
