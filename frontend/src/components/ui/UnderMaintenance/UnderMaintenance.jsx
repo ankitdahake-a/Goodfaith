@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Construction, ShieldAlert, Sparkles } from 'lucide-react';
+import { ArrowLeft, Construction } from 'lucide-react';
 import './UnderMaintenance.css';
 
 /**

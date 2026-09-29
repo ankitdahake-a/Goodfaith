@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import './Footer.css';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 /**
  * Institutional Enterprise Footer Component
  * - Features official GoodFaith brand logo (/logowhite.png) matching header
@@ -142,7 +144,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Policy Links */}
         <div className="footer-bottom-bar">
           <span className="footer-copyright">
-            © {new Date().getFullYear()} Good Faith Exim. All rights reserved.
+            © {CURRENT_YEAR} Good Faith Exim. All rights reserved.
           </span>
 
           <div className="footer-legal-links">

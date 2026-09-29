@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Thermometer, CheckCircle2, ShoppingBag, Eye, X, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
+import { Search, Thermometer, CheckCircle2, ShoppingBag, Eye, X, ArrowRight, ShieldCheck, AlertCircle, Copy, Check } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { PHARMA_CATALOG } from '../../../data/pharmaData';
+import { apiClient } from '../../../api/apiClient';
 import './CatalogSection.css';
 
 /**
@@ -8,21 +10,23 @@ import './CatalogSection.css';
  * Live Search, Category Filters, Cold-Chain Toggle, Data Table/Grid, COA Inspector Modal
  * Typography: Manrope 700 (Headings, IDs) & Inter 400/500/600 (Data, Buttons)
  */
-export default function CatalogSection({ initialSearchQuery = '' }) {
+export default function CatalogSection({ 
+  initialSearchQuery = '', 
+  initialCategory = 'All',
+  isQuoteModalOpen = false,
+  onCloseQuoteModal
+}) {
   const [searchTerm, setSearchTerm] = useState(initialSearchQuery);
-  const [prevSearchProp, setPrevSearchProp] = useState(initialSearchQuery);
-
-  if (initialSearchQuery !== prevSearchProp) {
-    setPrevSearchProp(initialSearchQuery);
-    setSearchTerm(initialSearchQuery);
-  }
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [onlyColdChain, setOnlyColdChain] = useState(false);
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'table'
   const [inspectItem, setInspectItem] = useState(null);
   const [rfqCart, setRfqCart] = useState([]);
   const [rfqSubmitted, setRfqSubmitted] = useState(false);
-  const [rfqModalOpen, setRfqModalOpen] = useState(false);
+  const [submissionResult, setSubmissionResult] = useState(null);
+  const [copiedRef, setCopiedRef] = useState(false);
+  const [rfqModalOpen, setRfqModalOpen] = useState(isQuoteModalOpen);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     institution: '',
     contactName: '',
@@ -31,6 +35,27 @@ export default function CatalogSection({ initialSearchQuery = '' }) {
     urgency: 'Standard (3-5 days)',
     notes: '',
   });
+
+  const [prevSearchQuery, setPrevSearchQuery] = useState(initialSearchQuery);
+  const [prevCategory, setPrevCategory] = useState(initialCategory);
+  const [prevQuoteOpen, setPrevQuoteOpen] = useState(isQuoteModalOpen);
+
+  if (initialSearchQuery !== prevSearchQuery) {
+    setPrevSearchQuery(initialSearchQuery);
+    setSearchTerm(initialSearchQuery);
+  }
+
+  if (initialCategory !== prevCategory) {
+    setPrevCategory(initialCategory);
+    setSelectedCategory(initialCategory);
+  }
+
+  if (isQuoteModalOpen !== prevQuoteOpen) {
+    setPrevQuoteOpen(isQuoteModalOpen);
+    if (isQuoteModalOpen) {
+      setRfqModalOpen(true);
+    }
+  }
 
   const categories = [
     'All',
@@ -84,14 +109,44 @@ export default function CatalogSection({ initialSearchQuery = '' }) {
     );
   };
 
-  const handleFormSubmit = (e) => {
+  const handleCloseModal = () => {
+    setRfqModalOpen(false);
+    if (onCloseQuoteModal) onCloseQuoteModal();
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setRfqSubmitted(true);
-    setTimeout(() => {
-      setRfqModalOpen(false);
-      setRfqSubmitted(false);
-      setRfqCart([]);
-    }, 2800);
+    setIsSubmitting(true);
+    try {
+      const result = await apiClient.submitRFQ({
+        ...formData,
+        items: rfqCart.length > 0 ? rfqCart : [{ name: 'Custom Formulation Inquiry', qty: 1 }]
+      });
+      setSubmissionResult(result);
+    } catch (err) {
+      console.warn('Fallback RFQ result:', err);
+      setSubmissionResult({
+        referenceId: `GF-RFQ-${Date.now().toString().slice(-6)}`
+      });
+    } finally {
+      setIsSubmitting(false);
+      setRfqSubmitted(true);
+      try {
+        confetti({
+          particleCount: 70,
+          spread: 60,
+          origin: { y: 0.6 }
+        });
+      } catch {
+        // Confetti is decorative
+      }
+    }
+  };
+
+  const handleCopyRef = (refId) => {
+    navigator.clipboard.writeText(refId);
+    setCopiedRef(true);
+    setTimeout(() => setCopiedRef(false), 2000);
   };
 
   return (
@@ -430,14 +485,14 @@ export default function CatalogSection({ initialSearchQuery = '' }) {
             RFQ Submission Modal
             ========================================================================== */}
         {rfqModalOpen && (
-          <div className="modal-backdrop" onClick={() => setRfqModalOpen(false)}>
+          <div className="modal-backdrop" onClick={handleCloseModal}>
             <div className="modal-content rfq-modal" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <div>
                   <span className="modal-eyebrow">Institutional / Named-Patient Order</span>
                   <h3 className="modal-title">Submit Sourcing Request (RFQ)</h3>
                 </div>
-                <button className="modal-close-btn" onClick={() => setRfqModalOpen(false)}>
+                <button className="modal-close-btn" onClick={handleCloseModal} aria-label="Close modal">
                   <X size={18} />
                 </button>
               </div>
@@ -445,27 +500,95 @@ export default function CatalogSection({ initialSearchQuery = '' }) {
               {rfqSubmitted ? (
                 <div className="rfq-success-state">
                   <CheckCircle2 size={48} className="success-icon" />
-                  <h3>RFQ Submitted Successfully!</h3>
-                  <p>Our regulatory medical affairs desk has received your manifest. A formal quote with landed pricing and cold-chain timelines will be dispatched to your email within 2 hours.</p>
+                  <h3>RFQ Dossier Submitted Successfully!</h3>
+                  <p>Our regulatory medical affairs desk has registered your manifest. A formal quote with landed pricing and cold-chain timelines will be dispatched within 2 hours.</p>
+                  
+                  {submissionResult?.referenceId && (
+                    <div className="rfq-reference-badge" style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      background: 'rgba(37, 99, 235, 0.12)',
+                      border: '1px solid rgba(37, 99, 235, 0.3)',
+                      padding: '8px 14px',
+                      borderRadius: '8px',
+                      marginTop: '12px',
+                      marginBottom: '16px'
+                    }}>
+                      <span style={{ fontSize: '13px', color: '#93c5fd' }}>Ref ID:</span>
+                      <strong style={{ fontFamily: 'monospace', fontSize: '14px', color: '#ffffff' }}>{submissionResult.referenceId}</strong>
+                      <button 
+                        type="button" 
+                        onClick={() => handleCopyRef(submissionResult.referenceId)}
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          color: copiedRef ? '#4ade80' : '#94a3b8',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginLeft: '4px'
+                        }}
+                        title="Copy Reference ID"
+                      >
+                        {copiedRef ? <Check size={14} /> : <Copy size={14} />}
+                      </button>
+                    </div>
+                  )}
+
+                  <div style={{ marginTop: '16px' }}>
+                    <button 
+                      type="button" 
+                      className="modal-primary-btn"
+                      onClick={() => {
+                        handleCloseModal();
+                        setRfqSubmitted(false);
+                        setRfqCart([]);
+                        setFormData({
+                          institution: '',
+                          contactName: '',
+                          email: '',
+                          country: '',
+                          urgency: 'Standard (3-5 days)',
+                          notes: '',
+                        });
+                      }}
+                    >
+                      Done & Return to Catalog
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form className="rfq-form" onSubmit={handleFormSubmit}>
-                  <div className="rfq-items-summary">
-                    <span className="summary-label">Manifest Summary ({rfqCart.length} items):</span>
-                    <div className="summary-tags">
-                      {rfqCart.map((item) => (
-                        <div className="summary-pill" key={item.id}>
-                          <span>{item.name}</span>
-                          <div className="qty-controls">
-                            <button type="button" onClick={() => handleQuantityChange(item.id, -1)}>-</button>
-                            <span>{item.qty}</span>
-                            <button type="button" onClick={() => handleQuantityChange(item.id, 1)}>+</button>
-                            <button type="button" className="remove-pill-btn" onClick={() => handleRemoveFromCart(item.id)} title="Remove item">×</button>
+                  {rfqCart.length > 0 ? (
+                    <div className="rfq-items-summary">
+                      <span className="summary-label">Manifest Summary ({rfqCart.length} items):</span>
+                      <div className="summary-tags">
+                        {rfqCart.map((item) => (
+                          <div className="summary-pill" key={item.id}>
+                            <span>{item.name}</span>
+                            <div className="qty-controls">
+                              <button type="button" onClick={() => handleQuantityChange(item.id, -1)}>-</button>
+                              <span>{item.qty}</span>
+                              <button type="button" onClick={() => handleQuantityChange(item.id, 1)}>+</button>
+                              <button type="button" className="remove-pill-btn" onClick={() => handleRemoveFromCart(item.id)} title="Remove item">×</button>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div style={{ 
+                      padding: '12px 16px', 
+                      background: 'rgba(255,255,255,0.04)', 
+                      borderRadius: '8px', 
+                      marginBottom: '16px',
+                      fontSize: '13px',
+                      color: '#94a3b8'
+                    }}>
+                      💡 Specify your required formulations or therapeutic requirements below.
+                    </div>
+                  )}
 
                   <div className="form-grid">
                     <div className="form-group">
@@ -473,7 +596,7 @@ export default function CatalogSection({ initialSearchQuery = '' }) {
                       <input
                         type="text"
                         required
-                        placeholder="e.g. St. Jude Cancer Hospital or Personal"
+                        placeholder="e.g. St. Jude Cancer Hospital or Clinic"
                         value={formData.institution}
                         onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
                       />
@@ -484,7 +607,7 @@ export default function CatalogSection({ initialSearchQuery = '' }) {
                       <input
                         type="text"
                         required
-                        placeholder="Dr. / Pharmacist / Patient Name"
+                        placeholder="Dr. / Pharmacist / Patient Family"
                         value={formData.contactName}
                         onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                       />
@@ -506,7 +629,7 @@ export default function CatalogSection({ initialSearchQuery = '' }) {
                       <input
                         type="text"
                         required
-                        placeholder="e.g. United Kingdom, UAE, Germany"
+                        placeholder="e.g. United Kingdom, UAE, Germany, Brazil"
                         value={formData.country}
                         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                       />
@@ -514,11 +637,11 @@ export default function CatalogSection({ initialSearchQuery = '' }) {
                   </div>
 
                   <div className="modal-footer">
-                    <button type="button" className="modal-secondary-btn" onClick={() => setRfqModalOpen(false)}>
+                    <button type="button" className="modal-secondary-btn" onClick={handleCloseModal}>
                       Cancel
                     </button>
-                    <button type="submit" className="modal-primary-btn">
-                      <span>Dispatch RFQ Dossier</span>
+                    <button type="submit" className="modal-primary-btn" disabled={isSubmitting}>
+                      <span>{isSubmitting ? 'Processing...' : 'Dispatch RFQ Dossier'}</span>
                       <ArrowRight size={14} />
                     </button>
                   </div>

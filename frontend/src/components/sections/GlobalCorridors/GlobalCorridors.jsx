@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Globe } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './GlobalCorridors.css';
@@ -93,7 +92,7 @@ export default function GlobalCorridors() {
   }, []);
 
   return (
-    <section className="global-corridors-section" id="global-reach" ref={sectionRef}>
+    <section className="global-corridors-section" id="corridors" ref={sectionRef}>
       {/* Natural Atmospheric Transition Background Layers */}
       <div className="corridors-bg-layers" aria-hidden="true">
         <div className="corridors-top-spotlight"></div>
